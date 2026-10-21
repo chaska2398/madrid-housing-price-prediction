@@ -1,0 +1,191 @@
+{
+  "n_rows": {
+    "merged": 14993,
+    "processed": 14936,
+    "in_scope": 10766
+  },
+  "benchmark": {
+    "1_datos_sin_procesar_sin_nan": {
+      "n_train": 1677,
+      "numeric": [
+        "size",
+        "rooms",
+        "bathrooms",
+        "latitude",
+        "longitude",
+        "distance",
+        "priceByArea"
+      ],
+      "categorical": [
+        "floor",
+        "propertyType",
+        "exterior",
+        "district",
+        "neighborhood",
+        "status",
+        "hasLift",
+        "parkingSpace"
+      ],
+      "results": {
+        "LinearRegression": {
+          "RMSE": 79888.8,
+          "MAE": 41236.45,
+          "R2": 0.7919,
+          "MAPE": 0.1044
+        },
+        "RandomForestRegressor": {
+          "RMSE": 20731.96,
+          "MAE": 9560.95,
+          "R2": 0.986,
+          "MAPE": 0.0268
+        },
+        "GradientBoostingRegressor": {
+          "RMSE": 20246.32,
+          "MAE": 12704.67,
+          "R2": 0.9866,
+          "MAPE": 0.032
+        },
+        "XGBRegressor": {
+          "RMSE": 20858.62,
+          "MAE": 11986.43,
+          "R2": 0.9858,
+          "MAPE": 0.0319
+        }
+      }
+    },
+    "2_datos_procesados": {
+      "n_train": 8612,
+      "numeric": [
+        "floor",
+        "size",
+        "exterior",
+        "rooms",
+        "bathrooms",
+        "latitude",
+        "longitude",
+        "distance",
+        "hasLift",
+        "priceByArea",
+        "hasParkingSpace",
+        "isParkingSpaceIncludedInPrice",
+        "parkingSpacePrice"
+      ],
+      "categorical": [
+        "propertyType",
+        "district",
+        "neighborhood",
+        "status"
+      ],
+      "results": {
+        "LinearRegression": {
+          "RMSE": 73198.59,
+          "MAE": 43172.04,
+          "R2": 0.871,
+          "MAPE": 0.1443
+        },
+        "RandomForestRegressor": {
+          "RMSE": 13276.9,
+          "MAE": 5002.45,
+          "R2": 0.9958,
+          "MAPE": 0.0146
+        },
+        "GradientBoostingRegressor": {
+          "RMSE": 19759.19,
+          "MAE": 13348.82,
+          "R2": 0.9906,
+          "MAPE": 0.0403
+        },
+        "XGBRegressor": {
+          "RMSE": 13108.66,
+          "MAE": 7783.47,
+          "R2": 0.9959,
+          "MAPE": 0.0239
+        }
+      }
+    },
+    "3_procesados_y_feature_engineering": {
+      "n_train": 8612,
+      "numeric": [
+        "floor",
+        "size",
+        "exterior",
+        "rooms",
+        "bathrooms",
+        "latitude",
+        "longitude",
+        "distance",
+        "hasLift",
+        "priceByArea",
+        "hasParkingSpace",
+        "isParkingSpaceIncludedInPrice",
+        "parkingSpacePrice",
+        "priceByAreaByDistrict",
+        "priceByAreaByneighborhood",
+        "roomSize",
+        "bathroomSize",
+        "bathroomRoom",
+        "liftFloorInteraction"
+      ],
+      "categorical": [
+        "propertyType",
+        "district",
+        "neighborhood",
+        "status"
+      ],
+      "results": {
+        "LinearRegression": {
+          "RMSE": 70517.99,
+          "MAE": 41942.99,
+          "R2": 0.8803,
+          "MAPE": 0.1446
+        },
+        "RandomForestRegressor": {
+          "RMSE": 13701.75,
+          "MAE": 5339.4,
+          "R2": 0.9955,
+          "MAPE": 0.0155
+        },
+        "GradientBoostingRegressor": {
+          "RMSE": 19879.67,
+          "MAE": 13744.21,
+          "R2": 0.9905,
+          "MAPE": 0.0423
+        },
+        "XGBRegressor": {
+          "RMSE": 12993.58,
+          "MAE": 7646.09,
+          "R2": 0.9959,
+          "MAPE": 0.0236
+        }
+      }
+    }
+  },
+  "final_model": {
+    "params": {
+      "learning_rate": 0.11681788387508839,
+      "max_depth": 7,
+      "min_samples_leaf": 1,
+      "min_samples_split": 11,
+      "n_estimators": 221,
+      "subsample": 0.6220627611238871
+    },
+    "features": [
+      "priceByArea",
+      "size",
+      "bathrooms",
+      "bathroomSize",
+      "neighborhood"
+    ],
+    "RMSE": 7767.75,
+    "MAE": 4296.99,
+    "R2": 0.9985,
+    "MAPE": 0.0132,
+    "feature_importance": {
+      "priceByArea": 0.1918,
+      "size": 0.194,
+      "bathrooms": 0.1746,
+      "bathroomSize": 0.0388,
+      "neighborhood": 0.4008
+    }
+  }
+}
